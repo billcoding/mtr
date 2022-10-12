@@ -101,11 +101,17 @@ void split_redraw(
                          strlongip(ctl, addr));
                 name = str;
             }
+
             /* May be we should test name's length */
-            snprintf(newLine, sizeof(newLine), "%s %d %d %d %d %d %d",
-                     name, net_loss(at), net_returned(at), net_xmit(at),
-                     net_best(at) / 1000, net_avg(at) / 1000,
-                     net_worst(at) / 1000);
+            snprintf(newLine, sizeof(newLine), "%s %d", name, net_last(at)/*for µs(micro-seconds)*/);
+
+            // MODIFIED BY me
+
+            /* May be we should test name's length */
+//            snprintf(newLine, sizeof(newLine), "%s %d %d %d %d %d %d",
+//                     name, net_loss(at), net_returned(at), net_xmit(at),
+//                     net_best(at) / 1000, net_avg(at) / 1000,
+//                     net_worst(at) / 1000);
         } else {
             snprintf(newLine, sizeof(newLine), "???");
         }
